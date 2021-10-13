@@ -8,3 +8,6 @@
 
 //Template
 #define WHATEVERYOULIKE 0
+
+// error 처리, errno에 대해
+#define _001_ERRNO 1
