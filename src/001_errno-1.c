@@ -1,8 +1,6 @@
-#include "000_Controller.h"
-
-#if _001_ERRNO
-//Add System headers here
-
+/**
+ * errno 사용법
+ */
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -18,8 +16,8 @@ int main(void) {
     errno = 0;
     int fd = open("error.txt", O_RDONLY);
 
-    //errno는 함수호출 fail 이후에 사용되어야 한다.
-    //errno는 자동으로 0으로 초기화되지 않는다.
+    // errno는 함수호출 fail 이후에 사용되어야 한다.
+    // errno는 자동으로 0으로 초기화되지 않는다.
     if (fd == -1) {
         //출력 결과 : 2, 이 값은 ENOENT 와 같다.
         printf("print errno 1: %d\n", errno);
@@ -27,11 +25,11 @@ int main(void) {
         //명시한 내용 뒤 colon(:) 을 붙이고 errno가 기술하는 현재 에러를 문자열로 바꾸어 stderr 출력
         perror("How to use perror? ");
 
-        //string.h header, Not thread safe
+        // string.h header, Not thread safe
         error_ptr = strerror(errno);
         printf("guide of using strerror : %s\n", error_ptr);
 
-        //string.h header, thread safe
+        // string.h header, thread safe
         strerror_r(errno, error_buf, sizeof(error_buf));
         printf("strerror_r : %s\n", error_buf);
     }
@@ -48,5 +46,3 @@ int main(void) {
 
     return 0;
 }
-
-#endif
