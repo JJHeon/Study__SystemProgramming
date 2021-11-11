@@ -29,7 +29,8 @@ TARGET = \
 errno-1 \
 clock-1 \
 timer-1 \
-timer-2
+timer-2 \
+timer-3
 
 # Target Files
 # TARGETS = $(patsubst %, %.out, $(TARGET))
@@ -56,6 +57,9 @@ timer-1: $(OBJ_DIR)/003_timer-1.o
 	$(CC) $(CCFLAGS) $^ -o $@ $(LDFLAGS) -lrt
 
 timer-2: $(OBJ_DIR)/003_timer-2.o
+	$(CC) $(CCFLAGS) $^ -o $@ $(LDFLAGS) -lrt
+
+timer-3: $(OBJ_DIR)/003_timer-3.o
 	$(CC) $(CCFLAGS) $^ -o $@ $(LDFLAGS) -lrt
 
 .PHONY: clean all
