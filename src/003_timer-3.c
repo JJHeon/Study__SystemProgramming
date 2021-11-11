@@ -22,7 +22,7 @@ void sigaction_handler(int signo, siginfo_t* si, void* ucontext) {
 int main() {
     timer_t timer;
     int ret = 0;
-
+    printf("declear1 | timer ID is %#jx\n", (uintmax_t)timer);
     // Signal Set
     sigset_t set;
     sigemptyset(&set);
@@ -68,6 +68,9 @@ retry:
             goto retry;
         }
     }
+
+    timer_delete(timer);
+    printf("end | timer ID is %#jx\n", (uintmax_t)timer);
 
     return 0;
 }
